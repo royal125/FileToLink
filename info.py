@@ -30,7 +30,7 @@ ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://falvolison_db_user:VyMuDNsnRu5szE56@cluster0.ijcfo7f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "falvolison_db_user")
 
-# Shortlink Info
-SHORTLINK = bool(environ.get('SHORTLINK', True))
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'https://api.tinyurl.com/create') # Optional, if you want to use the variable
-SHORTLINK_API = environ.get('SHORTLINK_API', 'dHYs9CZfEKEeHB5cJ88oQWf94WVDGfZMyInk4KjJZmfPYS4HoOg1sKosA66k')
+
+SHORTLINK = bool(environ.get('SHORTLINK', False)) # Set True Or False
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'api.shareus.io')
+SHORTLINK_API = environ.get('SHORTLINK_API', 'hRPS5vvZc0OGOEUQJMJzPiojoVK2')
