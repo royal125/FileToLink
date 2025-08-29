@@ -1,16 +1,20 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Use a modern, slim Python image
+FROM python:3.10-slim
 
-FROM python:3.10.8-slim-buster
+# Set the working directory for the application
+WORKDIR /app
 
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
+# Install git and other dependencies in a single, efficient command
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /FileToLink
-WORKDIR /FileToLink
-COPY . /FileToLink
+# Copy your requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code
+COPY . .
+
+# Command to run the bot when the container starts
 CMD ["python", "bot.py"]
